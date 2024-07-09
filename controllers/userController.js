@@ -38,11 +38,11 @@ export const updateUser = async (req,res) => {
     const userId = req.params.id
     const updates = req.body
     try{
-        const updateUser = await User.findByIdAndUpdate(userId,updates, {new:true})
+        const updatedUser = await User.findByIdAndUpdate(userId,updates, {new:true})
         if (!updateUser) {
             return res.status(404).json({ message: 'User not found' })
         }
-        res.json(updateUser)
+        res.json(updatedUser)
     }catch(err){
         console.error(err)
         res.status(500).json({message:'Error updating user'})
